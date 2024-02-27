@@ -1,0 +1,37 @@
+<!-- <div>
+  <button (click)="previousPage()" [routerLink]="['/artwork/page/',currentPage]">Anterior</button>
+  <span>Página {{ currentPage }} de {{ totalPages }}</span>
+  <button (click)="nextPage()" [routerLink]="['/artwork/page/',currentPage]">Siguiente</button>
+</div> -->
+
+
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item ">
+        @if (currentPage != 1) {
+          <a class="page-link border border-primary" (click)="previousPage()">Previous</a>
+        }
+      </li>
+      <li class="page-item"><a class="page-link  border border-primary"  (click)="goPage(1)">1</a></li>
+                                                                          
+      @if (currentPage + 2 <= totalPages) {
+        <li class="page-item"><a class="page-link  border border-primary" (click)="goPage(currentPage+1)">{{ currentPage+1 }}</a></li>
+        <li class="page-item"><a class="page-link  border border-primary" (click)="goPage(currentPage+2)">{{ currentPage+2 }}</a></li>
+      }
+     
+      <li class="page-item ">
+        <a class="page-link border border-primary" (click)="nextPage()">Next</a>
+      </li>
+  
+      <li class="page-item ">
+        <input class="page-link border border-primary" type="number" min="1" max="{{ totalPages }}" placeholder="{{currentPage}}" [(ngModel)]="pageNumberInput"> 
+      </li>
+      <li class="page-item">
+        <button class="page-link border border-primary" (click)="goToPageInput()">Go to Page</button>
+      </li>
+      <li class="page-item ">
+        <p class="page-link border border-primary">TotalPages: {{ totalPages }}</p>
+      </li>
+    </ul>
+  </nav>
